@@ -1,10 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, ArrowDown, ArrowUp, ArrowRight, Code2, GraduationCap, BookOpen, Terminal, Menu, X, Atom, Plus, Send, MessageCircle, Heart, ImageIcon } from 'lucide-react';
+import { ArrowUpRight, ArrowDown, ArrowUp, ArrowRight, Code2, GraduationCap, BookOpen, Menu, X, Atom, Plus, Send, MessageCircle, ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { navigation, currentSkills, roadmap, projects, milestones } from '@/lib/portfolio-data';
 import sculpture from '@/assets/code-sculpture.jpg';
+import moviesPreview from '@/assets/movies-preview.png.asset.json';
+import payooPreview from '@/assets/payoo-preview.png.asset.json';
 
 export const Route = createFileRoute('/')({
   head: () => ({ meta: [
@@ -75,5 +77,7 @@ function Index() {
   </>;
 }
 function ProjectPreview({ name, image }: { name: string; image: string | null }) {
+  const preview = image === 'movies' ? moviesPreview : image === 'payoo' ? payooPreview : null;
+  if (preview) return <img src={preview.url} alt={`Actual ${name} application interface`} width={1280} height={900} loading="lazy" />;
   return <div className="preview-pending"><ImageIcon size={35}/><span>{name} · Preview coming soon</span></div>;
 }
