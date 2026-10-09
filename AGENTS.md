@@ -8,3 +8,8 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Portfolio architecture
+- Keep portfolio skills, milestones, project facts, and navigation in a browser-safe structured data module so content can grow without changing page structure.
+- Use a single index portfolio with section anchors and shared design-system controls; this preserves a continuous editorial experience.
+- Keep contact submission disabled until a real delivery service and recipient are configured, to prevent false delivery feedback.
