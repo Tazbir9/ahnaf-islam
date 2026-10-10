@@ -22,6 +22,19 @@ export const currentSkills = [
   { name: 'Vite & Netlify', symbol: 'ϟ', kind: 'vite', detail: 'Build & deployment' },
 ];
 
+export const learningSkills = ['React.js', 'TypeScript', 'Mongoose', 'Node.js', 'Next.js', 'Express.js', 'MongoDB'] as const;
+
+// Populate only with real supplied details; null values render as unavailable, never fake links.
+export const contactDetails: { email: string | null; whatsapp: string | null; github: string | null; linkedin: string | null; facebook: string | null } = {
+  email: null, whatsapp: null, github: null, linkedin: null, facebook: null,
+};
+
+export function whatsappUrl(phone: string | null) {
+  if (!phone) return null;
+  const digits = phone.replace(/[\s()+-]/g, '');
+  return /^[1-9]\d{6,14}$/.test(digits) ? `https://wa.me/${digits}` : null;
+}
+
 export const roadmap = [
   { name: 'Programming fundamentals', topics: 'Problem-solving, data structures, algorithms, object-oriented programming, recursion, complexity analysis.' },
   { name: 'Advanced JavaScript', topics: 'Scope, closures, the event loop, promises, async/await, error handling, modules and prototypes.' },
