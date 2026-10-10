@@ -1,9 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, ArrowDown, ArrowUp, ArrowRight, Code2, GraduationCap, BookOpen, Menu, X, Atom, Plus, Send, MessageCircle, ImageIcon } from 'lucide-react';
+import { ArrowUpRight, ArrowDown, ArrowUp, ArrowRight, Code2, GraduationCap, BookOpen, Menu, X, Atom, Plus, Send, ImageIcon, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { navigation, currentSkills, roadmap, projects, milestones } from '@/lib/portfolio-data';
+import { navigation, currentSkills, learningSkills, roadmap, projects, milestones } from '@/lib/portfolio-data';
+import { PortfolioContactLinks } from '@/components/portfolio-contact-links';
+import profilePhoto from '@/assets/ahnaf-profile.jpg.asset.json';
+import resume from '@/assets/ahnaf-islam-resume.pdf.asset.json';
 import sculpture from '@/assets/code-sculpture.jpg';
 import moviesPreview from '@/assets/movies-preview.png.asset.json';
 import payooPreview from '@/assets/payoo-preview.png.asset.json';
@@ -51,7 +54,7 @@ function Index() {
         <h2>Aspiring Software Developer</h2>
         <div className="rotating-text">{subtitles[subtitle]}</div>
         <p className="hero-intro">I'm learning to build things that matter,<br />one line of code at a time.<br /><span>Computer Science student. Curious problem-solver.</span></p>
-        <div className="hero-actions"><Button asChild><a href="#projects">Explore My Projects <ArrowUpRight /></a></Button><Button asChild variant="outline"><a href="#contact">Let's Connect <ArrowUpRight /></a></Button></div>
+        <div className="hero-actions"><Button asChild><a href="#projects">Explore My Projects <ArrowUpRight /></a></Button><Button asChild variant="outline"><a href={resume.url} download="Ahnaf-Islam-Resume.pdf">Résumé <Download /></a></Button></div>
         <div className="hero-tech"><span className="hero-tech-label">MY BUILDING BLOCKS</span>{currentSkills.slice(0,4).map(s => <span key={s.name} className={`tech-symbol ${s.kind}`} title={s.name}>{s.symbol}</span>)}<Atom className="react-icon" size={26} aria-label="Learning React" /><span className="tech-symbol git" title="Git">⑂</span></div>
         <div className="code-note" aria-label="Developer introduction in code"><div className="code-top"><i/><i/><i/><span>the journey.js</span></div><pre><b>const</b> ahnaf = {'{'}<br />  role: <em>'aspiring developer'</em>,<br />  learning: <em>'React.js'</em>,<br />  mindset: <em>'keep building'</em><br />{'}'};</pre></div>
         <div className="hero-bottom"><a className="scroll-link" href="#about"><ArrowDown size={13}/> A little more about me</a><span>BASED IN BANGLADESH · BUILDING FOR THE WEB</span></div>
@@ -64,7 +67,7 @@ function Index() {
       <div className="skill-tabs" role="tablist" aria-label="Skill status">{['Current skills','Currently learning','Future roadmap'].map(tab => <Button key={tab} variant="ghost" role="tab" aria-selected={skillTab === tab} aria-controls="skill-panel" className={skillTab === tab ? 'selected' : ''} onClick={() => setSkillTab(tab)}>{tab}{tab === 'Currently learning' && <Atom size={12}/>}</Button>)}</div>
       <div id="skill-panel" role="tabpanel" aria-label={skillTab}>
       {skillTab === 'Current skills' && <><div className="skill-grid">{currentSkills.map(s => <div className="skill-item" key={s.name}><span className={`tech-symbol ${s.kind}`}>{s.symbol}</span><div><h3>{s.name}</h3><p>{s.detail}</p></div></div>)}</div><div className="learning-strip"><Atom size={32} className="react-icon"/><div><strong>The next chapter: React.js</strong><p>Exploring components, state, and a new way to think about interfaces.</p></div><span className="status">Currently learning</span></div></>}
-      {skillTab === 'Currently learning' && <><div className="learning-strip"><Atom size={40} className="react-icon"/><div><strong>React.js</strong><p>My current learning focus — one component at a time.</p></div><span className="status">Learning</span></div><div className="topic-list">{['Components & JSX','Props & state','Event handling','Conditional rendering','Lists & forms','React Hooks','API integration','Component composition'].map(t => <span className="topic" key={t}>{t}</span>)}</div></>}
+      {skillTab === 'Currently learning' && <><div className="learning-skill-grid">{learningSkills.map(name => <div className="learning-skill" key={name}><Code2 size={20}/><h3>{name}</h3><span className="status">Currently learning</span></div>)}</div><div className="topic-list">{['Components & JSX','Props & state','Event handling','Conditional rendering','Lists & forms','React Hooks','API integration','Component composition'].map(t => <span className="topic" key={t}>{t}</span>)}</div></>}
       {skillTab === 'Future roadmap' && <div className="roadmap-grid">{roadmap.map((r,i) => <details className="roadmap-item" key={r.name}><summary><span><span className="text-muted-foreground">{String(i+1).padStart(2,'0')} / </span>{r.name}</span><Plus size={15}/></summary><p><span className="status">Exploring next</span><br/><br/>{r.topics}</p></details>)}</div>}
       </div>
     </div></section>
