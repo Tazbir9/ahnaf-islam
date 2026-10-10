@@ -13,3 +13,5 @@
 - Keep portfolio skills, milestones, project facts, and navigation in a browser-safe structured data module so content can grow without changing page structure.
 - Use a single index portfolio with section anchors and shared design-system controls; this preserves a continuous editorial experience.
 - Keep contact submission disabled until a real delivery service and recipient are configured, to prevent false delivery feedback.
+- Prepare public contact writes through a validated server function into private, service-only storage; keep the visitor form disabled while email delivery is unconfigured.
+- Generate the downloadable résumé from portfolio facts with learning skills separated from practiced skills, so experience is never overstated.
