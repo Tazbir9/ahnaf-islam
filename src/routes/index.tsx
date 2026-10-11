@@ -8,7 +8,7 @@ import { PortfolioContactLinks } from '@/components/portfolio-contact-links';
 import { PortfolioContactForm } from '@/components/portfolio-contact-form';
 import profilePhoto from '@/assets/ahnaf-profile.jpg.asset.json';
 import resume from '@/assets/ahnaf-islam-resume.pdf.asset.json';
-import sculpture from '@/assets/code-sculpture.jpg';
+import heroPortrait from "@/assets/ahnaf-cutout.png";
 import moviesPreview from '@/assets/movies-preview.png.asset.json';
 import payooPreview from '@/assets/payoo-preview.png.asset.json';
 
@@ -48,7 +48,7 @@ function Index() {
     </div>{menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation">{navigation.map(([name,id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{name}</a>)}</nav>}</header>
     <main>
     <section id="home" className="hero">
-      <img className="hero-art" src={sculpture} width={1024} height={1024} alt="Sculptural chrome code brackets with lavender and mint glass objects" />
+      <div className="hero-portrait" aria-hidden="false"><img src={heroPortrait} width={880} height={1200} alt="Ahnaf Islam" /></div>
       <div className="container hero-content reveal">
         <div className="eyebrow">A curious mind. A growing developer.</div>
         <h1>Ahnaf Islam<span>.</span></h1>
