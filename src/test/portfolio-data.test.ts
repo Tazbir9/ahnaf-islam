@@ -7,7 +7,8 @@ describe('Honest portfolio facts', () => {
     expect(currentSkills.map(skill => skill.name)).not.toContain(name);
   });
   it('does not invent contact information', () => {
-    expect(Object.values(contactDetails)).toEqual([null, null, null, null, null]);
+    expect(contactDetails.email).toBe('ahnaftazbir@gmail.com');
+    expect(whatsappUrl(contactDetails.whatsapp)).toBe('https://wa.me/8801858503746');
   });
   it('activates WhatsApp only for a valid supplied phone number', () => {
     expect(whatsappUrl(null)).toBeNull();
