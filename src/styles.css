@@ -203,3 +203,4 @@ p { line-height: 1.8; }
 .form-input { transition: border-color .25s, box-shadow .25s; }
 .form-input:focus { box-shadow: 0 0 0 3px color-mix(in oklab,var(--primary) 18%,transparent); }
 .milestone.current:before { animation: dot-pulse 2s ease-in-out infinite; }
+.nav-link.active:after { transform: scaleX(1); }
