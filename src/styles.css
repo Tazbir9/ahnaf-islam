@@ -175,3 +175,32 @@ p { line-height: 1.8; }
     animation: rise-in linear both; animation-timeline: view(); animation-range: entry 0% entry 70%;
   }
 }
+/* Scroll progress + custom cursor */
+.scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 100; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg,var(--primary),var(--mint)); pointer-events: none; }
+.cursor-dot,.cursor-ring { display: none; }
+.custom-cursor, .custom-cursor * { cursor: none !important; }
+.custom-cursor .cursor-dot,.custom-cursor .cursor-ring { display: block; position: fixed; left: 0; top: 0; pointer-events: none; z-index: 200; opacity: 0; transition: opacity .3s; }
+.custom-cursor.cursor-on .cursor-dot,.custom-cursor.cursor-on .cursor-ring { opacity: 1; }
+.cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--mint); }
+.cursor-ring::after { content: ''; position: absolute; width: 36px; height: 36px; left: -18px; top: -18px; border-radius: 50%; border: 1px solid color-mix(in oklab,var(--primary) 80%,transparent); transition: transform .3s cubic-bezier(.2,.7,.2,1), background .3s, border-color .3s; }
+.cursor-ring.is-hover::after { transform: scale(1.6); background: color-mix(in oklab,var(--primary) 14%,transparent); border-color: var(--primary); }
+.cursor-ring.is-down::after { transform: scale(.75); }
+/* Professional micro-interactions */
+.site-header { animation: header-drop .7s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes header-drop { from { transform: translateY(-100%); opacity: 0; } to { transform: none; opacity: 1; } }
+.nav-link:after { content: ''; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--primary); transform: scaleX(0); transform-origin: right; transition: transform .35s ease; }
+.nav-link:hover:after { transform: scaleX(1); transform-origin: left; }
+.hero-actions a, .contact-form button { position: relative; overflow: hidden; transition: transform .25s ease, box-shadow .3s ease; }
+.hero-actions a:hover, .contact-form button:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 30px -10px color-mix(in oklab,var(--primary) 70%,transparent); }
+.hero-actions a::before { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg,transparent 30%,color-mix(in oklab,var(--foreground) 25%,transparent) 50%,transparent 70%); transform: translateX(-120%); transition: transform .7s ease; }
+.hero-actions a:hover::before { transform: translateX(120%); }
+.text-link svg, .project-links a svg { transition: transform .3s ease; }
+.text-link:hover svg, .project-links a:hover svg { transform: translate(3px,-3px); }
+.code-note { transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.code-note:hover { transform: rotate(0) scale(1.03); }
+.contact-icon, .contact-channel svg { transition: transform .3s ease; }
+.contact-channel:hover svg { transform: scale(1.15) rotate(-6deg); }
+.form-input { transition: border-color .25s, box-shadow .25s; }
+.form-input:focus { box-shadow: 0 0 0 3px color-mix(in oklab,var(--primary) 18%,transparent); }
+.milestone.current:before { animation: dot-pulse 2s ease-in-out infinite; }
+.nav-link.active:after { transform: scaleX(1); }
