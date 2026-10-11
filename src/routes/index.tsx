@@ -8,7 +8,6 @@ import { PortfolioContactLinks } from '@/components/portfolio-contact-links';
 import { PortfolioContactForm } from '@/components/portfolio-contact-form';
 import profilePhoto from '@/assets/ahnaf-profile.jpg.asset.json';
 import resume from '@/assets/ahnaf-islam-resume.pdf.asset.json';
-import sculpture from '@/assets/code-sculpture.jpg';
 import heroPortrait from "@/assets/ahnaf-cutout.png";
 import moviesPreview from '@/assets/movies-preview.png.asset.json';
 import payooPreview from '@/assets/payoo-preview.png.asset.json';
