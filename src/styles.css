@@ -123,3 +123,9 @@ p { line-height: 1.8; }
 .learning-skill { background: var(--secondary); border: 1px solid var(--border); border-radius: 6px; padding: 22px; }
 .learning-skill svg { color: var(--mint); }.learning-skill h3 { margin: 15px 0; font-size: 15px; }
 @media(max-width:700px) { .learning-skill-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.learning-skill { padding: 17px 12px; } }
+.hero-portrait { position: absolute; right: max(calc((100vw - 1120px)/2), 20px); bottom: 0; height: 600px; width: 460px; display: flex; align-items: flex-end; justify-content: center; }
+.hero-portrait:before { content: ''; position: absolute; width: 420px; height: 420px; border-radius: 50%; top: 70px; background: radial-gradient(circle, color-mix(in oklab,var(--primary) 38%,transparent), transparent 68%); filter: blur(20px); animation: portrait-float 6s ease-in-out infinite alternate; }
+.hero-portrait img { position: relative; height: 100%; width: auto; object-fit: contain; mask-image: linear-gradient(to bottom,#000 80%,transparent); animation: portrait-float 6s ease-in-out infinite; }
+@keyframes portrait-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@media(prefers-reduced-motion: reduce) { .hero-portrait img,.hero-portrait:before { animation: none; } }
+@media(max-width:900px) { .hero-portrait { opacity: .35; width: 320px; height: 440px; right: 0; } }
