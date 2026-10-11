@@ -148,3 +148,30 @@ p { line-height: 1.8; }
   .code-note { position: relative; top: auto; left: auto; right: auto; width: 100%; max-width: 340px; transform: none; margin-top: 28px; text-align: left; }
   .hero-bottom { margin-top: 32px; width: 100%; flex-direction: column; gap: 10px; }
 }
+/* Entrance + text animations */
+@keyframes rise-in { from { opacity: 0; transform: translateY(24px); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes letter-glow { 0%,100% { text-shadow: 0 0 0 transparent; } 50% { text-shadow: 0 0 22px color-mix(in oklab,var(--primary) 70%,transparent); } }
+@keyframes dot-pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+@keyframes shimmer-text { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@keyframes icon-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.hero-content > * { animation: rise-in .8s cubic-bezier(.2,.7,.2,1) both; }
+.hero-content > *:nth-child(1) { animation-delay: .1s; }
+.hero-content > *:nth-child(2) { animation-delay: .2s; }
+.hero-content > *:nth-child(3) { animation-delay: .32s; }
+.hero-content > *:nth-child(4) { animation-delay: .44s; }
+.hero-content > *:nth-child(5) { animation-delay: .56s; }
+.hero-content > *:nth-child(6) { animation-delay: .68s; }
+.hero-content > *:nth-child(7) { animation-delay: .8s; }
+.hero-content > *:nth-child(n+8) { animation-delay: .92s; }
+.hero h1 span { display: inline-block; animation: dot-pulse 2.4s ease-in-out infinite; }
+.hero h2 { background: linear-gradient(90deg,var(--foreground) 40%,var(--primary) 50%,var(--foreground) 60%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: rise-in .8s .32s both, shimmer-text 6s 1.2s linear infinite; }
+.section-title .soft, .journey-quote { animation: letter-glow 5s ease-in-out infinite; }
+.tech-symbol { animation: icon-bob 3s ease-in-out infinite; }
+.tech-symbol:nth-child(odd) { animation-delay: .6s; }
+.skill-item, .learning-skill, .project-card, .fact, .topic, .contact-channel { transition: transform .3s ease, border-color .3s ease; }
+.skill-item:hover, .learning-skill:hover, .project-card:hover, .topic:hover { transform: translateY(-4px); border-color: color-mix(in oklab,var(--primary) 45%,transparent); }
+@supports (animation-timeline: view()) {
+  .section .eyebrow, .section-title, .section p, .section h3, .skill-item, .learning-skill, .project-card, .project-small, .fact, .milestone, .roadmap-item, .topic, .contact-channel, .form-field, .profile-intro {
+    animation: rise-in linear both; animation-timeline: view(); animation-range: entry 0% entry 70%;
+  }
+}
