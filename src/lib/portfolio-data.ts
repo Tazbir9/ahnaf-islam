@@ -26,7 +26,11 @@ export const learningSkills = ['React.js', 'TypeScript', 'Mongoose', 'Node.js', 
 
 // Populate only with real supplied details; null values render as unavailable, never fake links.
 export const contactDetails: { email: string | null; whatsapp: string | null; github: string | null; linkedin: string | null; facebook: string | null } = {
-  email: null, whatsapp: null, github: null, linkedin: null, facebook: null,
+  email: 'ahnaftazbir@gmail.com',
+  whatsapp: '+8801858503746',
+  github: 'https://github.com/Tazbir9',
+  linkedin: 'https://www.linkedin.com/in/pro-coder-ahnaf-islam',
+  facebook: 'https://www.facebook.com/ahnaf.islam.tazbir',
 };
 
 export function whatsappUrl(phone: string | null) {
