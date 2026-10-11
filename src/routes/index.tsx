@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/compone
 import { navigation, currentSkills, learningSkills, roadmap, projects, milestones } from '@/lib/portfolio-data';
 import { PortfolioContactLinks } from '@/components/portfolio-contact-links';
 import { PortfolioContactForm } from '@/components/portfolio-contact-form';
+import { PortfolioMotion } from '@/components/portfolio-motion';
 import profilePhoto from '@/assets/ahnaf-profile.jpg.asset.json';
 import resume from '@/assets/ahnaf-islam-resume.pdf.asset.json';
 import heroPortrait from "@/assets/ahnaf-cutout.png";
@@ -40,7 +41,7 @@ function Index() {
     return () => { if (timer) window.clearInterval(timer); observer.disconnect(); };
   }, []);
   return <>
-    <header className="site-header"><div className="container header-inner">
+    <PortfolioMotion /><header className="site-header"><div className="container header-inner">
       <a href="#home" className="logo" aria-label="Ahnaf home">ahnaf<span>.</span></a>
       <nav aria-label="Main navigation" className="desktop-nav">{navigation.map(([name, id]) => <a key={id} className={`nav-link ${active === id ? 'active' : ''}`} href={`#${id}`}>{name}</a>)}</nav>
       <Button asChild variant="outline" size="sm" className="header-contact"><a href="#contact">Let's talk <ArrowUpRight /></a></Button>
